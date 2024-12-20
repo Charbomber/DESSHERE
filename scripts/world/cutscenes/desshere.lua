@@ -233,6 +233,89 @@ return {
 		
 		cutscene:wait(4)
 		
+		-- reactions and cleanup exposition time
+		local convoHappened = false
+		local noelleConvoHappened = false
+		if cutscene:getCharacter("noelle") then
+			noelleConvoHappened = true
+			local noelle = cutscene:getCharacter("noelle")
+			noelle:set("shocked")
+			cutscene:textTagged("* ", "what", "noelle")
+			cutscene:textTagged("* Wait,[wait:5] wait, wait!", "shock", "noelle")
+			noelle:set("walk_happy")
+			cutscene:lookAt(noelle, Utils.facingFromAngle(Utils.angle(noelle, dess)))
+			cutscene:textTagged("* So then you-...[wait:5] you're--!!", "blush_surprise", "noelle")
+			cutscene:lookAt(dess, Utils.facingFromAngle(Utils.angle(dess, noelle)))
+			cutscene:textTagged("* Hm?", "eyebrow", "dess")
+			cutscene:wait(cutscene:moveTo(noelle, dess.x-40, dess.y, 0.5))
+			noelle.visible = false
+			local susie = cutscene:getCharacter("susie")
+			if susie then
+				susie:set("shock_right")
+			end
+			cutscene:wait(cutscene:setAnimation(dess, {"bighug", 2/30, false}))
+			cutscene:wait(1)
+			cutscene:textTagged("* DESS!!![wait:20] The real one!", "blush_big_smile", "noelle")
+			cutscene:textTagged("* Uh?[wait:5] Uh?[wait:5] Uh???", "wtf_b", "dess")
+			noelle.visible = true
+			dess:resetSprite()
+			if susie then
+				susie:resetSprite()
+			end
+			cutscene:textTagged("* Um,[wait:5] uh,[wait:5] I'm sorry but...", "wtf", "dess")
+			cutscene:textTagged("* I don't think...[wait:5] we've met?", "wtf", "dess")
+			noelle:set("walk")
+			cutscene:textTagged("* What?", "surprise_frown", "noelle")
+			noelle:set("walk_sad")
+			cutscene:look(noelle, "down")
+			cutscene:textTagged("[speed:0.6]* Oh...[wait:5][speed:0.8] I guess you still look the same as the other Dess.", "sad_side", "noelle")
+			cutscene:textTagged("[speed:0.8]* Which is nothing like the Dess I know.", "dejected", "noelle")
+			noelle:set("walk_smile")
+			cutscene:look(noelle, "right")
+			cutscene:textTagged("* S-[wait:5] sorry for jumping on you like that, then.", "sad_b", "noelle")
+			cutscene:textTagged("* Don't think anything of it.", "smile_closed", "noelle")
+			noelle:set("walk")
+			if party1 = noelle then
+				noelle:walkTo("partyspot1", 1, "right")
+			else
+				noelle:walkTo("partyspot2", 1, "left")
+			end
+			cutscene:lookAt(dess, Utils.facingFromAngle(Utils.angle(dess, noelle)))
+			cutscene:textTagged("* Uh...[wait:5] don't worry 'bout it.", "genuine", "dess")
+			cutscene:textTagged("* Sorry for getting your hopes up.", "neutral_c", "dess")
+		end
+		
+		if cutscene:getCharacter("susie") and not convoHappened then
+			convoHappened = true
+			if not noelleConvoHappened then
+				cutscene:textTagged("* Oh um,[wait:5] nice to finally,[wait:5] um,[wait:5] talk.", "nervous", "susie")
+				cutscene:textTagged("* I've... heard a lot about you.", "sus_nervous", "susie")
+			end
+			cutscene:textTagged("* Soooo...", "neutral_side", "susie")
+			cutscene:textTagged("* What the hell is going on?", "annoyed", "susie")
+		end
+		
+		if cutscene:getCharacter("ceroba") and not convoHappened then
+			-- again idk shit about UT yellow please fix this if not in character
+			convoHappened = true
+			if noelleConvoHappened then
+				cutscene:textTagged("* If I may inturrupt...", "confounded", "ceroba")
+			end
+			cutscene:textTagged("* A lot just happened at once.\n* Can you explain?", "neutral", "ceroba")
+		end
+		
+		if cutscene:getCharacter("ralsei") and not convoHappened then
+			if noelleConvoHappened then
+				cutscene:textTagged("* ...um...", "blush_surprise", "ralsei")
+			end
+			cutscene:textTagged("* er...?", "concern_smile", "ralsei")
+		end
+		
+		if cutscene:getCharacter("brenda") and not convoHappened then
+			cutscene:textTagged("* Heh?", "neutral", "brenda")
+		end
+		
+		
 		Game.world.music:fade(1)
 		
 		Game:setFlag("inDessIntro", false)
