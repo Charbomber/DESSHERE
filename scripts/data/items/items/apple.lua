@@ -62,17 +62,4 @@ function item:init()
 	self.rdReactions["dess"] = "Thanks."
 end
 
-function item:getReactions()
-	
-	if user == "dess" and reactor == "dess" then
-		
-		if Game:getFlag("realDess") then
-			return self.rdReactions
-		else
-			return self.reactions
-		end
-		
-	end
-end
-
 return item

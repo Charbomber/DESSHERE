@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 30,
+  nextobjectid = 31,
   properties = {
     ["music"] = "This is the music in the scene where the main character finds out about aliens or something there's really not much to it"
   },
@@ -539,6 +539,19 @@ return {
           shape = "point",
           x = 740,
           y = 290,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 30,
+          name = "keycardSpot",
+          type = "",
+          shape = "point",
+          x = 790,
+          y = 820,
           width = 0,
           height = 0,
           rotation = 0,

@@ -128,9 +128,8 @@ return {
 		cutscene:textTagged("* dont be like that haha", "thisremindsmeofthetimeiwasindarkplace", "dess")
 		cutscene:wait(4)
 		cutscene:textTagged("* h-[wait:5] haha.[wait:10] hah.", "thisremindsmeofthetimeiwasindarkplace", "dess")
-		cutscene:textTagged("* haha um why is nobody laughing?", "kind", "dess")
 		cutscene:wait(1)
-		cutscene:textTagged("* Because you really screwed the goose this time.", "angry", "dess", {nametag = "Other Dess?"})
+		cutscene:textTagged("* You really screwed the goose this time.", "angry", "dess", {nametag = "Other Dess?"})
 		cutscene:textTagged("* Can you even begin to know how much trouble you've caused?", "angry", "dess", {nametag = "Other Dess?"})
 		cutscene:textTagged("* Or is that level of thought beyond you?", "angry", "dess", {nametag = "Other Dess?"})
 		cutscene:wait(4)
@@ -218,17 +217,21 @@ return {
 		cutscene:wait(cutscene:walkTo(theOtherDess, theOtherDess.x, theOtherDess.y+80, 2, "up", true))
 		cutscene:look(dess, "down")
 		if party1 then
-			cutscene:look(party1, "up")
+			cutscene:look(party1, "down")
 		end
 		if party2 then
-			cutscene:look(party2, "up")
+			cutscene:look(party2, "down")
 		end
 		cutscene:wait(1)
 		cutscene:look(theOtherDess, "right")
 		cutscene:wait(2)
 		cutscene:look(theOtherDess, "up")
 		cutscene:wait(cutscene:walkTo(theOtherDess, theOtherDess.x, theOtherDess.y+80, 2, "up", true))
-		cutscene:wait(cutscene:walkTo(theOtherDess, theOtherDess.x, theOtherDess.y+SCREEN_HEIGHT, 1, "down"))
+		cutscene:wait(1)
+		cutscene:textTagged("* What are you waiting for?", "condescending", "dess", {nametag = "Other Dess?"})
+		cutscene:textTagged("* Get lost!", "angry", "dess", {nametag = "Other Dess?"})
+		cutscene:panTo("dessspot")
+		cutscene:wait(cutscene:walkTo(theOtherDess, theOtherDess.x, theOtherDess.y+SCREEN_HEIGHT, 2, "down"))
 		theOtherDess:remove()
 		
 		cutscene:wait(4)
@@ -239,10 +242,10 @@ return {
 		if cutscene:getCharacter("noelle") then
 			noelleConvoHappened = true
 			local noelle = cutscene:getCharacter("noelle")
-			noelle:set("shocked")
+			noelle.actor:set("shocked")
 			cutscene:textTagged("* ", "what", "noelle")
 			cutscene:textTagged("* Wait,[wait:5] wait, wait!", "shock", "noelle")
-			noelle:set("walk_happy")
+			noelle.actor:set("walk_happy")
 			cutscene:lookAt(noelle, Utils.facingFromAngle(Utils.angle(noelle, dess)))
 			cutscene:textTagged("* So then you-...[wait:5] you're--!!", "blush_surprise", "noelle")
 			cutscene:lookAt(dess, Utils.facingFromAngle(Utils.angle(dess, noelle)))
@@ -251,31 +254,31 @@ return {
 			noelle.visible = false
 			local susie = cutscene:getCharacter("susie")
 			if susie then
-				susie:set("shock_right")
+				susie.actor:set("shock_right")
 			end
 			cutscene:wait(cutscene:setAnimation(dess, {"bighug", 2/30, false}))
 			cutscene:wait(1)
 			cutscene:textTagged("* DESS!!![wait:20] The real one!", "blush_big_smile", "noelle")
 			cutscene:textTagged("* Uh?[wait:5] Uh?[wait:5] Uh???", "wtf_b", "dess")
 			noelle.visible = true
-			dess:resetSprite()
+			dess.actor:resetSprite()
 			if susie then
-				susie:resetSprite()
+				susie.actor:resetSprite()
 			end
 			cutscene:textTagged("* Um,[wait:5] uh,[wait:5] I'm sorry but...", "wtf", "dess")
 			cutscene:textTagged("* I don't think...[wait:5] we've met?", "wtf", "dess")
-			noelle:set("walk")
+			noelle.actor:set("walk")
 			cutscene:textTagged("* What?", "surprise_frown", "noelle")
-			noelle:set("walk_sad")
+			noelle.actor:set("walk_sad")
 			cutscene:look(noelle, "down")
 			cutscene:textTagged("[speed:0.6]* Oh...[wait:5][speed:0.8] I guess you still look the same as the other Dess.", "sad_side", "noelle")
 			cutscene:textTagged("[speed:0.8]* Which is nothing like the Dess I know.", "dejected", "noelle")
-			noelle:set("walk_smile")
+			noelle.actor:set("walk_smile")
 			cutscene:look(noelle, "right")
 			cutscene:textTagged("* S-[wait:5] sorry for jumping on you like that, then.", "sad_b", "noelle")
 			cutscene:textTagged("* Don't think anything of it.", "smile_closed", "noelle")
-			noelle:set("walk")
-			if party1 = noelle then
+			noelle.actor:set("walk")
+			if party1 == noelle then
 				noelle:walkTo("partyspot1", 1, "right")
 			else
 				noelle:walkTo("partyspot2", 1, "left")
@@ -283,6 +286,7 @@ return {
 			cutscene:lookAt(dess, Utils.facingFromAngle(Utils.angle(dess, noelle)))
 			cutscene:textTagged("* Uh...[wait:5] don't worry 'bout it.", "genuine", "dess")
 			cutscene:textTagged("* Sorry for getting your hopes up.", "neutral_c", "dess")
+			cutscene:look(dess, "down")
 		end
 		
 		if cutscene:getCharacter("susie") and not convoHappened then
@@ -315,13 +319,36 @@ return {
 			cutscene:textTagged("* Heh?", "neutral", "brenda")
 		end
 		
+		if #Game.party > 1 then
+			cutscene:textTagged("* Oh,[wait:2] right.\n* There's lots to go over.", "eyebrow", "dess")
+			cutscene:textTagged("* It's hard to explain,[wait:5] like really hard.", "neutral_b", "dess")
+			cutscene:textTagged("* Actually...", "neutral_c", "dess")
+			cutscene:textTagged("* Here's not the best place.", "neutral", "dess")
+			cutscene:textTagged("* Let's go,[wait:5] there should\nbe a spot to sit down ahead.", "neutral", "dess")
+			cutscene:textTagged("* Right, you have the keycard yeah?", "eyebrow", "dess")
+			cutscene:textTagged("* Pop that baby in the reader for me.", "heckyeah", "dess")
+			cutscene:look(dess, "up")
+			if party2 then
+				cutscene:look(party1, "up")
+				cutscene:wait(cutscene:walkTo(party2, "keycardSpot", 1, "up"))
+			else
+				cutscene:wait(cutscene:walkTo(party1, "keycardSpot", 1, "up"))
+			end
+		else
+			cutscene:wait(cutscene:walkTo(dess, "keyCardSpot", 1, "up"))
+		end
+		Assets.playSound("card_swipe")
+		cutscene:wait(2)
+		
+		cutscene:textTagged("* ... eh?[wait:10]\n* Nothing happened.", "eyebrow", "dess")
+		cutscene:textTagged("* Let's just... try anyways??", "neutral_b", "dess")
 		
 		Game.world.music:fade(1)
 		
 		Game:setFlag("inDessIntro", false)
 		cutscene:attachCamera(1)
-		cutscene:attachFollowers(1)
-		cutscene:wait(2)
+		cutscene:attachFollowers(4)
+		cutscene:wait(4)
 		
 		
 	end,
