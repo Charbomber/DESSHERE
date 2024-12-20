@@ -36,6 +36,17 @@ function item:init()
         ["mario"] = placeholder,
         ["pauling"] = placeholder,
     }
+	self.rdheal_amounts = {
+		["kris"] = 40,
+        ["susie"] = 80,
+        ["ralsei"] = 60,
+        ["noelle"] = 100,
+
+        ["dess"] = 10,
+        ["jamm"] = 60,
+        ["mario"] = placeholder,
+        ["pauling"] = placeholder,
+	}
 
     -- Default shop price (sell price is halved)
     self.price = 10
@@ -140,6 +151,49 @@ function item:init()
 	    brenda = "Disgusting?",
 	    dess = "Literally perfect?",
 	},
+    }
+	
+	self.rdReactions = {
+	kris = {
+	    susie = "(Why are you so annoyed?)",
+	    ralsei = "(Is something suspicious?)",
+	    noelle = "...",
+	    brenda = "What's the matter?",
+	    dess = "Is there an issue?",
+        },
+	susie = {
+	    susie = "I dunno what this is.",
+	    ralsei = "Mysterious!",
+	    noelle = "???",
+	    brenda = "Huh?",
+	    dess = "Wish I knew...",
+	},
+	ralsei = {
+	    susie = "Ralsei, are you good?!",
+	    ralsei = "It's... erm...",
+	    noelle = "That's not good...",
+	    brenda = "Yikes.",
+	    dess = "God dammit.",
+	},
+	noelle = {
+	    susie = "What's it like?",
+	    ralsei = "It's a mystery!",
+	    noelle = "Tastes like a mix...",
+	    brenda = "Weird.",
+	    noyno = "I wanna know! Tell me!",
+	},
+    dess = "It's just water. Bogus.",
+	-- fuck if i know
+	-- ill just ask brenda later
+	--brenda = {
+	--    susie = "(Jeez...)",
+	--    ralsei = "Do you need a bag?",
+	--    noelle = "(Oh...)",
+	--    brenda = "I think I'm gonna be sick...",
+	--    dess = "yea",
+	--},
+	ceroba = "Meh.",
+
     }
 end
 
