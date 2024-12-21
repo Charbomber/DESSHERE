@@ -50,7 +50,10 @@ function item:init()
         susie = "That tacky thing? No!",
         ralsei = "Not my shade of green...",
         noelle = "Okay! ...? What do you mean, unused!?",
+		dess = "unused item alert",
     }
+	self.rdReactions = Utils.copy(self.reactions)
+	self.rdReactions["dess"] = "Get this away from me!"
 end
 
 function item:applyMoneyBonus(gold)

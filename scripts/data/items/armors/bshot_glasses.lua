@@ -56,6 +56,9 @@ function item:init()
         brenda = "Time to be a Big Shot!",
 		jamm = "(The glasses are clear...)"
     }
+	
+	self.rdReactions = Utils.copy(self.reactions)
+	self.rdReactions["dess"] = "Stylish. Nice."
 end
 
 function item:applyMoneyBonus(gold)

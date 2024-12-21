@@ -60,7 +60,7 @@ function item:init()
 	}
 	
 	self.rdReactions = Utils.copy(self.reactions)
-	self.rdReactions["dess"] = "Too much grease."
+	self.rdReactions["dess"] = "You call THIS pizza?!"
 end
 
 -- Function overrides go here

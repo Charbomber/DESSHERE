@@ -38,6 +38,8 @@ function item:init()
 		dess = "no way jose",
         brenda = "... No.",
     }
+	self.rdReactions = Utils.copy(self.reactions)
+	self.rdReactions["dess"] = "It's like space! Rad!"
 end
 
 return item

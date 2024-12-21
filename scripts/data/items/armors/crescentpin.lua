@@ -57,6 +57,8 @@ function item:init()
 		jamm = "No use for me.",
 		noel = "Lame.",
     }
+	self.rdReactions = Utils.copy(self.reactions)
+	self.rdReactions["dess"] = "Not mine, right?"
 end
 
 function item:getReaction(user_id, reactor_id)

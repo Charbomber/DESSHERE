@@ -51,7 +51,10 @@ function item:init()
         susie = "Let the games begin!",
         ralsei = "It's too, um, evil.",
         noelle = "...? It smiled at me?",
+		dess = "chaos chaos ect ect",
     }
+	self.rdReactions = Utils.copy(self.reactions)
+	self.rdReactions["dess"] = "Heh! Is this a prop?!"
 end
 
 return item

@@ -52,7 +52,10 @@ function item:init()
 			brenda = "(Please don't hurt me, but...)"
 		},
         noel = "wow... nintendo go supermario nintendo bes company go ninwahooo- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+		dess = "check my custom emblem"
     }
+	self.rdReactions = Utils.copy(self.reactions)
+	self.rdReactions["dess"] = "Is this from the year 3000?!"
 end
 
 function item:convertToLightEquip(inventory)

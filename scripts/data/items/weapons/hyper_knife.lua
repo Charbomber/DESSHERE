@@ -50,8 +50,11 @@ function item:init()
     self.reactions = {
         dumbie = "THE POWER OF SUN, IN THE PALM OF MY HAND!!!!!",
         brenda = "I... don't really like knives.",
+		dess = "isnt this unused now",
 		jamm = "Not my weapon. I said no!"
     }
+	self.rdReactions = Utils.copy(self.reactions)
+	self.rdReactions["dess"] = "Nah."
 end
 
 return item

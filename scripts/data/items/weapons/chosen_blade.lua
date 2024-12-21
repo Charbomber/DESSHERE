@@ -57,6 +57,8 @@ function item:init()
         dess = "little ol' me a hero? surely you're jestin",
         brenda = "Swords aren't really my style."
     }
+	self.rdReactions = Utils.copy(self.reactions)
+	self.rdReactions["dess"] = "Legendary...-ily tacky."
 end
 
 --function item:convertToLightEquip(chara)

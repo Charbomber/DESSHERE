@@ -51,7 +51,10 @@ function item:init()
         susie = "Heh, you steal this? Heh.",
         ralsei = "It's beautiful...",
         noelle = "...",
+		dess = "you aborted snowgrave for this dialogue?",
     }
+	self.rdReactions = Utils.copy(self.reactions)
+	self.rdReactions["dess"] = "I get bad vibes...?"
 end
 
 return item

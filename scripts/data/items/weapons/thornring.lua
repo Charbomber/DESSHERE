@@ -50,7 +50,10 @@ function item:init()
     self.reactions = {
         susie = "A torture device?",
         ralsei = "...",
+		dess = "KILL!!!!!!!!!!!!!!!!!!!!!",
     }
+	self.rdReactions = Utils.copy(self.reactions)
+	self.rdReactions["dess"] = "This... is bad news."
 end
 
 function item:onBattleUpdate(battler)

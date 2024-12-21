@@ -50,7 +50,10 @@ function item:init()
         susie = "What's this!? A TOOTHPICK?",
         ralsei = "That's yours, Frisk...",
         noelle = "(wow...)",
+		dess = "Its not cool enough",
     }
+	self.rdReactions = Utils.copy(self.reactions)
+	self.rdReactions["dess"] = "Fencing is for geeks."
 end
 
 function item:convertToLightEquip(chara)

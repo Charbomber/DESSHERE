@@ -58,6 +58,8 @@ function item:init()
 		jamm = "No, seriously, try it. It's, like, maple syrup and bacon. Yeah, I know it's weird, TRUST ME, IT'S GOOD.",
         noel = "(I'm not pouring syrup on my head.)",
     }
+	self.rdReactions = Utils.copy(self.reactions)
+	self.rdReactions["dess"] = "Whaddya mean 'wear'?!"
 end
 
 return item
