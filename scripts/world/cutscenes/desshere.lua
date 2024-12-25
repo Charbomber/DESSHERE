@@ -341,7 +341,7 @@ return {
 		cutscene:wait(2)
 		
 		cutscene:textTagged("* ... eh?[wait:10]\n* Nothing happened.", "eyebrow", "dess")
-		cutscene:textTagged("* Let's just... try anyways??", "neutral_b", "dess")
+		cutscene:textTagged("* Let's just... try anyways??", "eyebrow", "dess")
 		
 		Game.world.music:fade(1)
 		
@@ -351,6 +351,136 @@ return {
 		cutscene:wait(4)
 		
 		
+	end,
+	
+	desswater1 = function(cutscene)
+		local dess   = cutscene:getCharacter("dess")
+		local susie  = cutscene:getCharacter("susie")
+		local ralsei = cutscene:getCharacter("ralsei")
+		local noelle = cutscene:getCharacter("noelle")
+		local ceroba = cutscene:getCharacter("ceroba")
+		local brenda = cutscene:getCharacter("brenda")
+		-- still don't know how to write jamm but i'll leave this here for them
+		-- i can already barely write brenda idk how to do the dev shit
+		local jamm = cutscene:getCharacter("jamm")
+		
+		if noelle then
+			cutscene:look(noelle, "up")
+		end
+		if susie then
+			cutscene:look(susie, "up")
+		end
+		if ralsei then
+			cutscene:look(ralsei, "up")
+		end
+		if ceroba then
+			cutscene:look(ceroba, "up")
+		end
+		if brenda then
+			cutscene:look(brenda, "up")
+		end
+		if jamm then
+			cutscene:look(jamm, "up")
+		end
+		if dess then
+			cutscene:look(dess, "up")
+		end
+		
+		cutscene:wait(2)
+		
+		if noelle then
+			cutscene:textTagged("* Woah...", "blush_surprise", "noelle")
+			cutscene:textTagged("* It's so pretty...", "smile_side", "noelle")
+		end
+		if ralsei then
+			cutscene:textTagged("* Look everybody!", "blush_pleased", "ralsei")
+		end
+		if ceroba then
+			-- obligatory "please rewrite this if you think you can do it better"
+			cutscene:textTagged("* ...", "surprised", "ceroba")
+		end
+		if brenda then
+			cutscene:textTagged("* Wow...", "shocked_blush", "brenda")
+		end
+		if susie then
+			cutscene:textTagged("* Woah!!", "surprise", "susie")
+		end
+		
+		-- based on who would be first to speak up about it
+		-- sorry I don't wanna make this very Susie-centric it's just kinda hard not to
+		-- Susie is a very outgoing character in the sea of timid or quiet characters in Dark Place
+		local questionAsked = false
+		if susie then
+			questionAsked = true
+			cutscene:textTagged("* You live with this\nevery day,[wait:5] Dess?", "surprise", "susie")
+		elseif ralsei then
+			questionAsked = true
+			cutscene:textTagged("* This must be every day\nfor you Dess,[wait:5] right?", "surprise_neutral", "ralsei")
+		elseif ceroba then
+			questionAsked = true
+			-- you get the point by now
+			cutscene:textTagged("* And you just pass by\nthis daily?", "nervous", "ceroba")
+		elseif brenda then
+			questionAsked = true
+			cutscene:textTagged("* What???[wait:10]\n* You get to have this\nEVERY DAY?", "shocked_b", "brenda")
+		elseif noelle then
+			questionAsked = true
+			cutscene:textTagged("* Whaaaat?[wait:10]\n* I'm so jealous![wat:5]\nSo you just have this...", "question", "noelle")
+			cutscene:textTagged("* Can't we switch places?", "question", "noelle")
+		end
+		
+		if #Game.party > 1 then
+			if questionAsked then
+				cutscene:textTagged("* Woah,[wait:3] woah,[wait:3] woah![wait:10]\n* This is the first time\nI'm seeing this too!", "wtf_b", "dess")
+				cutscene:textTagged("* I needed you to open the\ngate,[wait:3] remember?", "eyebrow", "dess")
+				
+				if ceroba then
+					cutscene:textTagged("* So then...", "question", "ceroba")
+					cutscene:textTagged("* Why haven't we seen\nyou outside of here?", "question", "ceroba")
+				elseif ralsei then
+					cutscene:textTagged("* Oh...", "dismissive", "ralsei")
+					cutscene:textTagged("* Really?[wait:10]\n* But where are you\motherwise,[wait:5] then?", "small_smile", "ralsei")
+				elseif susie then
+					cutscene:textTagged("* Oh,[wait:6] right.", "surprise", "susie")
+					cutscene:textTagged("* Wait,[wait:5] but then where do you...?", "nervous", "susie")
+				elseif brenda then
+					cutscene:textTagged("* Where'd you come\nfrom,[wait:5] then?", "shocked_b", "brenda")
+				elseif noelle then
+					cutscene:textTagged("* Oh,[wait:5] yeah.[wait:10'\n* I guess that makes sense.", "smile_closed_b", "noelle")
+					cutscene:textTagged("* Wait,[wait:5] where have you\nbeen this whole time\nthen?", "confused", "noelle")
+				end
+				
+				cutscene:textTagged("* Oh,[wait:5] I've just been\nhanging around those alleys this\nwhole time.", "neutral", "dess")
+				cutscene:textTagged("* I don't know if\nyou've noticed but...", "annoyed", "dess")
+				cutscene:textTagged("* There's no going back\nfrom here.", "annoyed", "dess")
+				
+				if ceroba then
+					cutscene:textTagged("* Huh?", "question", "ceroba")
+				elseif ralsei then
+					cutscene:textTagged("* Huh??", "surprise_neutral", "ralsei")
+				elseif susie then
+					cutscene:textTagged("* Huh?[wait:5] Whuddya mean?", "sus_nervous", "susie")
+					cutscene:textTagged("* Are you saying we're...", "surprise", "susie")
+				elseif brenda then
+					cutscene:textTagged("* What??", "shocked", "brenda")
+				elseif noelle then
+					cutscene:textTagged("* !!!", "shock", "noelle")
+				end
+				
+				cutscene:textTagged("* Yep.[wait:2].[wait:2].[wait:2] I've tried.", "annoyed", "dess")
+				cutscene:textTagged("* There's something keeping\nus in.[wait:10] Go ahead\nand try to leave.", "angry", "dess")
+				cutscene:textTagged("* I've been stuck in those\ndamned alleyways for\na long time...", "neutral_b", "dess")
+				
+			else
+				cutscene:textTagged("* That's... crazy.", "wtf_b", "dess")
+			end
+		end
+		
+		
+	end,
+	
+	desswater2 = function(cutscene)
+	
 	end,
 	
 }
