@@ -439,7 +439,7 @@ return {
 					cutscene:textTagged("* Why haven't we seen\nyou outside of here?", "question", "ceroba")
 				elseif ralsei then
 					cutscene:textTagged("* Oh...", "dismissive", "ralsei")
-					cutscene:textTagged("* Really?[wait:10]\n* But where are you\motherwise,[wait:5] then?", "small_smile", "ralsei")
+					cutscene:textTagged("* Really?[wait:10]\n* But where are you\notherwise,[wait:5] then?", "small_smile", "ralsei")
 				elseif susie then
 					cutscene:textTagged("* Oh,[wait:6] right.", "surprise", "susie")
 					cutscene:textTagged("* Wait,[wait:5] but then where do you...?", "nervous", "susie")
